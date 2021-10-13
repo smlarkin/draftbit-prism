@@ -1,0 +1,87 @@
+.container {
+  width: 95%;
+  height: 180px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    'mt mt mt mt mt mt mt'
+    'ml pt pt pt pt pt mr'
+    'ml pl ct ct ct pr mr'
+    'ml pb pb pb pb pb mr'
+    'mb mb mb mb mb mb mb';
+}
+
+.mt {
+  grid-area: mt;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.ml {
+  grid-area: ml;
+}
+
+.pt {
+  grid-area: pt;
+  border-top: 0.25rem solid #28334d;
+  border-right: 0.25rem solid #28334d;
+  border-left: 0.25rem solid #28334d;
+}
+
+.mr {
+  grid-area: mr;
+}
+
+.pl {
+  grid-area: pl;
+  border-left: 0.25rem solid #28334d;
+  padding-left: 0.25rem;
+}
+
+.ct {
+  grid-area: ct;
+}
+
+.pr {
+  grid-area: pr;
+  border-right: 0.25rem solid #28334d;
+  padding-right: 0.25rem;
+}
+
+.pb {
+  grid-area: pb;
+  border-right: 0.25rem solid #28334d;
+  border-bottom: 0.25rem solid #28334d;
+  border-left: 0.25rem solid #28334d;
+}
+
+.mb {
+  grid-area: mb;
+  background-color: #3d4b6c;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.mt,
+.ml,
+.pt,
+.mr,
+.pl,
+.ct,
+.pr,
+.pb,
+.mb {
+  height: 100%;
+  box-sizing: border-box;
+  place-self: center;
+  text-align: center;
+  width: 100%;
+  background-color: #3d4b6c;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.65rem;
+}
