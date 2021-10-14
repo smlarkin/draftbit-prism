@@ -15,7 +15,7 @@ module Collapsible = {
 }
 
 module Prism = {
-  @react.component @module("./Prism")
+  @react.component @module("../Prism")
   external make: () => React.element = "Prism"
 }
 
