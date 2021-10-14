@@ -4,26 +4,16 @@ import { BorderBoxAttribute } from './types';
 type PrismFormProps = {
   selectedAttribute: BorderBoxAttribute;
   setSelectedAttribute: (selectedAttribute: BorderBoxAttribute) => void;
-  updateAttributes: (
-    selectedAttribute: BorderBoxAttribute,
-    index: number,
-  ) => void;
   index: number;
 };
 
 export const PrismForm = ({
   selectedAttribute,
   setSelectedAttribute,
-  updateAttributes,
   index,
 }: PrismFormProps) => {
   return (
-    <form
-      className={'prism-form'}
-      onSubmit={(e) => {
-        e.preventDefault();
-        updateAttributes(selectedAttribute, index);
-      }}>
+    <div className={'prism-form'}>
       <input
         autoFocus
         onFocus={(e) => e.preventDefault()}
@@ -70,6 +60,6 @@ export const PrismForm = ({
         <option value="px">px</option>
         <option value="pt">pt</option>
       </select>
-    </form>
+    </div>
   );
 };

@@ -1,26 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 
 import './styles.css';
+import { BorderBoxAttribute } from './types';
 import { PrismForm } from './PrismForm';
 import { defaultBorderBoxAttributes } from '../../constants';
-
-type BorderBoxAttribute = {
-  name: string;
-  unit: 'px' | 'pt' | null;
-  value: number | null;
-};
+import { useAttributes } from '../../context';
 
 type PrismProps = {
   borderBoxAttributes?: BorderBoxAttribute[];
 };
 
 export const Prism = ({ borderBoxAttributes }: PrismProps) => {
-  /* this [attributes, setAttributes] useState hook is used in lieu of real props being passed
-  and an API method to mutate the contained values (and / or a global store to hold such values) */
-  const [attributes, setAttributes] = useState(
-    () => borderBoxAttributes ?? defaultBorderBoxAttributes,
-  );
-
+  const [attributes, setAttributes] = useAttributes();
   const [selectedAttribute, setSelectedAttribute] =
     useState<BorderBoxAttribute | null>(null);
 
@@ -32,14 +23,11 @@ export const Prism = ({ borderBoxAttributes }: PrismProps) => {
     originalAttribute?.value !== newAttribute?.value;
 
   const updateAttributes = useCallback(
-    (attribute: BorderBoxAttribute, originalAttributeIndex?: number) => {
-      const index =
-        originalAttributeIndex ??
-        attributes.findIndex(({ name }) => name === attribute.name);
+    (attribute: BorderBoxAttribute) => {
+      const index = attributes.findIndex(({ name }) => name === attribute.name);
+      const previousAttribue = attributes[index];
 
-      const originalAttribue = attributes[index];
-
-      if (getIsDirty(originalAttribue, attribute)) {
+      if (getIsDirty(previousAttribue, attribute)) {
         const name = attribute.name;
         const unit = attribute?.unit !== null ? attribute.unit : 'px';
         const value = attribute?.value !== null ? attribute.value : 0;
@@ -53,7 +41,7 @@ export const Prism = ({ borderBoxAttributes }: PrismProps) => {
 
       setSelectedAttribute(null);
     },
-    [attributes],
+    [attributes, setAttributes],
   );
 
   const handleEnterOrEscape = useCallback(
@@ -64,6 +52,12 @@ export const Prism = ({ borderBoxAttributes }: PrismProps) => {
     },
     [selectedAttribute, updateAttributes],
   );
+
+  useEffect(() => {
+    if (borderBoxAttributes) {
+      setAttributes(borderBoxAttributes);
+    }
+  }, [borderBoxAttributes, setAttributes]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleEnterOrEscape);
@@ -110,7 +104,6 @@ export const Prism = ({ borderBoxAttributes }: PrismProps) => {
                   {...{
                     selectedAttribute,
                     setSelectedAttribute,
-                    updateAttributes,
                     index,
                   }}
                 />
