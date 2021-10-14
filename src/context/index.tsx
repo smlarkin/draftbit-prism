@@ -13,7 +13,7 @@ export const AttributesProvider = ({ children }: AttributesProviderProps) => {
   const value = useState(defaultBorderBoxAttributes);
   /* NOTE
   this useState hook could be used here to persist state changes
-  with a useEffect hook the subscribes to to value[0] and sends changes along to an API ...
+  with a useEffect hook the subscribes to value[0] and sends changes along to an API ...
   possibly with a debounce or with GraphQL we might choose an optimic UI path :)
   */
 

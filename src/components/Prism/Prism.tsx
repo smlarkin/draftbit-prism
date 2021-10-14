@@ -79,9 +79,10 @@ export const Prism = ({ borderBoxAttributes }: PrismProps) => {
 
         return (
           <div
-            className={`prism-${attribute?.name}`}
+            className={`prism-${attribute.name}`}
             key={attribute?.name + index}>
             <div
+              data-testid={attribute.name}
               onClick={(e) => {
                 e.stopPropagation();
 
