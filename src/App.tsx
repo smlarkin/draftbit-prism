@@ -1,7 +1,6 @@
-import React from 'react';
 import './App.css';
 import { PropertiesPanel } from './components/PropertiesPanel/PropertiesPanel.gen';
-import { AttributesProvider } from './context';
+import { AttributesProvider } from './contexts';
 
 function App() {
   return (

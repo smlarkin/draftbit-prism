@@ -1,5 +1,5 @@
 import './styles.css';
-import { BorderBoxAttribute } from './types';
+import { BorderBoxAttribute } from '../../types';
 
 type PrismFormProps = {
   selectedAttribute: BorderBoxAttribute;

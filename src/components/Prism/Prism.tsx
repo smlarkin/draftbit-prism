@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 
 import './styles.css';
-import { BorderBoxAttribute } from './types';
+import { BorderBoxAttribute } from '../../types';
 import { PrismForm } from './PrismForm';
 import { defaultBorderBoxAttributes } from '../../constants';
-import { useAttributes } from '../../context';
+import { useAttributes } from '../../contexts';
 
 type PrismProps = {
   borderBoxAttributes?: BorderBoxAttribute[];

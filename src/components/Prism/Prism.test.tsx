@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { AttributesProvider } from '../../context';
+import { AttributesProvider } from '../../contexts';
 import { Prism } from './Prism';
 
 describe('Prism', () => {

@@ -78,7 +78,7 @@
   place-self: center;
   text-align: center;
   width: 100%;
-  color: ##ecedef;
+  color: #ecedef;
   background-color: #3d4b6c;
   display: flex;
   align-items: center;
@@ -109,10 +109,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.prism-text {
-  color: ;
 }
 
 .prism-value-selected {
