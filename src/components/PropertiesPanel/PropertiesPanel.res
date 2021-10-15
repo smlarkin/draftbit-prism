@@ -16,16 +16,13 @@ module Collapsible = {
 
 module Prism = {
   @react.component @module("../Prism")
-  external make: () => React.element = "Prism"
+  external make: unit => React.element = "Prism"
 }
 
-@genType.as("PropertiesPanel")
-@react.component
-export make = () =>
+@genType @genType.as("PropertiesPanel") @react.component
+let make = () =>
   <aside className="PropertiesPanel">
     <Collapsible title="Layout"> <span> {React.string("example")} </span> </Collapsible>
-    <Collapsible title="Margins & Padding">
-      <Prism />
-    </Collapsible>
+    <Collapsible title="Margins & Padding"> <Prism /> </Collapsible>
     <Collapsible title="Size"> <span> {React.string("example")} </span> </Collapsible>
   </aside>
